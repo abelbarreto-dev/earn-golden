@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 from datetime import date
 
 
@@ -10,3 +11,10 @@ class Account(BaseModel):
     email: str
     password: str
     mobile: str
+
+
+class Bank(BaseModel):
+    name: str
+    code: str
+    agency: str
+    account_id: Optional[int] = None
