@@ -15,6 +15,13 @@ yourself.
 - [Project FAQ](#project-faq)
 
 ## Dependencies
+This project is build with MVC and Python Programming Language. But we have some additional packages like:
+
+- Python 3
+- Pip
+- SQL Alchemy
+- Flask
+
 ## Models
 This is basically our models to use with intent of access the backend of this application. Here it
 is represented as a `.json` format. Basically we have the following models:
