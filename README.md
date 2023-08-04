@@ -7,6 +7,11 @@ this application, it would be possible to manage what you do and want to do to y
 yourself.
 
 ## Summary
+- [Dependencies](#dependencies)
+- [Models](#models)
+- [How to Run](#how-to-run)
+- [Database Relationship](#database-relationship)
+
 ## Dependencies
 ## Models
 ## How to Run
