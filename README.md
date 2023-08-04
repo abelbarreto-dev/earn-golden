@@ -19,6 +19,7 @@ This project is build with MVC and Python Programming Language. But we have some
 
 - Python 3
 - Pip
+- Pydantic
 - SQL Alchemy
 - Flask
 
