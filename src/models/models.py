@@ -42,3 +42,12 @@ class Card:
     type_card: CardType
     balance: Decimal
     bank_account_id: Optional[int] = None
+
+
+class Invoice:
+    total_invoice: Decimal
+    installments: int
+    installments_value: Decimal
+    close_date: date
+    payment_date: date
+    card_id: Optional[int] = None
