@@ -39,6 +39,6 @@ class Card:
     number: str
     due_date: date
     sec_code: str
-    type: CardType
+    type_card: CardType
     balance: Decimal
     bank_account_id: Optional[int] = None
