@@ -3,7 +3,10 @@ from typing import Optional
 from datetime import date
 from decimal import Decimal
 
-from src.utils.enums import BankAccountType
+from src.utils.enums import (
+    BankAccountType,
+    CardType,
+)
 
 
 class Account(BaseModel):
@@ -29,3 +32,13 @@ class BankAccount:
     type_account: BankAccountType
     balance: Decimal
     bank_id: Optional[int] = None
+
+
+class Card:
+    name: str
+    number: str
+    due_date: date
+    sec_code: str
+    type: CardType
+    balance: Decimal
+    bank_account_id: Optional[int] = None
