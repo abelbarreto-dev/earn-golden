@@ -54,7 +54,7 @@ class Invoice(BaseModel):
     card_id: Optional[int] = None
 
 
-class Pix:
+class Pix(BaseModel):
     pix_key_type: PixType
     pix_key: str
     bank_account_id: Optional[int] = None
