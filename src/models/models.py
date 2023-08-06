@@ -27,7 +27,7 @@ class Bank(BaseModel):
     account_id: Optional[int] = None
 
 
-class BankAccount:
+class BankAccount(BaseModel):
     variation: int = 0
     number: str
     type_account: BankAccountType
