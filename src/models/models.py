@@ -45,7 +45,7 @@ class Card(BaseModel):
     bank_account_id: Optional[int] = None
 
 
-class Invoice:
+class Invoice(BaseModel):
     total_invoice: Decimal
     installments: int
     installments_value: Decimal
