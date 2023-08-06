@@ -11,3 +11,11 @@ class CardType(Enum):
     CREDIT = "credit"
     DEBIT = "debit"
     PREPAID = "prepaid"
+
+
+class PixType(Enum):
+    CPF = 'cpf'
+    CNPJ = 'cnpj'
+    EMAIL = 'email'
+    MOBILE = 'mobile'
+    RANDOMIC = 'randomic'

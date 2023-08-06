@@ -6,6 +6,7 @@ from decimal import Decimal
 from src.utils.enums import (
     BankAccountType,
     CardType,
+    PixType,
 )
 
 
@@ -51,3 +52,9 @@ class Invoice:
     close_date: date
     payment_date: date
     card_id: Optional[int] = None
+
+
+class Pix:
+    pix_key_type: PixType
+    pix_key: str
+    bank_account_id: Optional[int] = None
