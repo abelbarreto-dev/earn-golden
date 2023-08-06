@@ -27,7 +27,7 @@ class Bank(BaseModel):
     account_id: Optional[int] = None
 
 
-class BankAccount:
+class BankAccount(BaseModel):
     variation: int = 0
     number: str
     type_account: BankAccountType
@@ -35,7 +35,7 @@ class BankAccount:
     bank_id: Optional[int] = None
 
 
-class Card:
+class Card(BaseModel):
     name: str
     number: str
     due_date: date
@@ -45,7 +45,7 @@ class Card:
     bank_account_id: Optional[int] = None
 
 
-class Invoice:
+class Invoice(BaseModel):
     total_invoice: Decimal
     installments: int
     installments_value: Decimal
@@ -54,7 +54,7 @@ class Invoice:
     card_id: Optional[int] = None
 
 
-class Pix:
+class Pix(BaseModel):
     pix_key_type: PixType
     pix_key: str
     bank_account_id: Optional[int] = None
