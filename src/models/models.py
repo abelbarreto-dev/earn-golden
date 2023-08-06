@@ -35,7 +35,7 @@ class BankAccount(BaseModel):
     bank_id: Optional[int] = None
 
 
-class Card:
+class Card(BaseModel):
     name: str
     number: str
     due_date: date
