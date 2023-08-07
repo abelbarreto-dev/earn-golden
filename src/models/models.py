@@ -58,3 +58,12 @@ class Pix(BaseModel):
     pix_key_type: PixType
     pix_key: str
     bank_account_id: Optional[int] = None
+
+
+class TransferPix:
+    send_pix_type: PixType
+    receiver_pix_type: PixType
+    is_yours: bool = False
+    send_pix_key: str
+    receiver_pix_key: str
+    balance: Decimal
