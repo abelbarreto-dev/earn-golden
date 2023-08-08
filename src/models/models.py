@@ -72,3 +72,12 @@ class TransferPix(BaseModel):
 class TransferPixAccounts(BaseModel):
     id_pix_sender: int
     id_pix_receiver: Optional[int] = None
+
+
+class MoneyBox(BaseModel):
+    name: str
+    description: str
+    start_date: Optional[date] = None
+    end_date: Optional[date] = None
+    objective: Optional[Decimal] = None
+    balance: Decimal
