@@ -60,7 +60,7 @@ class Pix(BaseModel):
     bank_account_id: Optional[int] = None
 
 
-class TransferPix:
+class TransferPix(BaseModel):
     send_pix_type: PixType
     receiver_pix_type: PixType
     is_yours: bool = False
