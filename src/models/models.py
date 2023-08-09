@@ -7,6 +7,7 @@ from src.utils.enums import (
     BankAccountType,
     CardType,
     PixType,
+    MoneyOperator,
 )
 
 
@@ -81,3 +82,9 @@ class MoneyBox(BaseModel):
     end_date: Optional[date] = None
     objective: Optional[Decimal] = None
     balance: Decimal
+
+
+class TransferMoneyBox(BaseModel):
+    money_operator: MoneyOperator
+    balance: Decimal
+    money_box_id: Optional[int] = None
