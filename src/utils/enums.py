@@ -14,11 +14,11 @@ class CardType(Enum):
 
 
 class PixType(Enum):
-    CPF = 'cpf'
-    CNPJ = 'cnpj'
-    EMAIL = 'email'
-    MOBILE = 'mobile'
-    RANDOMIC = 'randomic'
+    CPF = "cpf"
+    CNPJ ="cnpj"
+    EMAIL = "email"
+    MOBILE = "mobile"
+    RANDOMIC = "randomic"
 
 
 class MoneyOperator(Enum):
