@@ -19,3 +19,8 @@ class PixType(Enum):
     EMAIL = 'email'
     MOBILE = 'mobile'
     RANDOMIC = 'randomic'
+
+
+class MoneyOperator(Enum):
+    DEPOSIT = "deposit"
+    WITHDRAW = "withdraw"
