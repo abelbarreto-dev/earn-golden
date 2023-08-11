@@ -96,3 +96,11 @@ class Signatures(BaseModel):
     due_date: date
     value: Decimal
     account_id: Optional[int] = None
+
+
+class Payment(BaseModel):
+    name: str
+    descript: str
+    value_to_pay: Decimal
+    is_paid: bool = False
+    account_id: Optional[int] = None
