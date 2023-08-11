@@ -104,3 +104,9 @@ class Payment(BaseModel):
     value_to_pay: Decimal
     is_paid: bool = False
     account_id: Optional[int] = None
+
+
+class Deposit(BaseModel):
+    balance: Decimal
+    bank_account_id: int
+    descript: Optional[str] = None
