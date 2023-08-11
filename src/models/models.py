@@ -88,3 +88,19 @@ class TransferMoneyBox(BaseModel):
     money_operator: MoneyOperator
     balance: Decimal
     money_box_id: Optional[int] = None
+
+
+class Signatures(BaseModel):
+    name: str
+    descript: str
+    due_date: date
+    value: Decimal
+    account_id: Optional[int] = None
+
+
+class Payment(BaseModel):
+    name: str
+    descript: str
+    value_to_pay: Decimal
+    is_paid: bool = False
+    account_id: Optional[int] = None
