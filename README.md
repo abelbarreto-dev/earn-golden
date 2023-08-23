@@ -10,7 +10,7 @@ yourself.
 - [Dependencies](#dependencies)
 - [Models](#models)
   - [Detailed Models](#detailed-models)
-- [Migrations]()
+- [Migrations](#migrations)
 - [How to Run](#how-to-run)
 - [Database Relationship](#database-relationship)
 - [Project FAQ](#project-faq)
@@ -82,7 +82,7 @@ each model with their attributes:
 ## Migrations
 To run this app you need to have a migration structure. You can generate
 it running the module [set_alembic.py](set_alembic.py) or if there's
-in this project, I may to recommend see: [How to Migrate](#migrations)
+in this project, I may to recommend see: [How to Migrate](#how-to-migrate)
 in FAQ.
 
 ## How to Run
@@ -94,7 +94,7 @@ in FAQ.
 ## Project FAQ
 Here we've a FAQ about this project.
 
-<details id="migrations">
+<details id="how-to-migrate">
     <summary>
         How to Migrate?
     </summary>
