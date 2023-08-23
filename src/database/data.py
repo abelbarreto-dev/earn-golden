@@ -44,3 +44,16 @@ class BankAccount(Base):
     number = Column(String(64), nullable=False)
     type_account = Column(Enum("payment", "saving", "checking"), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
+
+
+class Card(Base):
+    __tablename__ = "cards"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
+    name = Column(String(128), nullable=False)
+    number = Column(String(128), nullable=False)
+    due_date = Column(Date, nullable=False)
+    sec_code = Column(String(16), nullable=False)
+    type_card = Column(Enum('credit', 'debit', 'prepaid'), nullable=False)
+    balance = Column(DECIMAL(10, 2), nullable=False)
