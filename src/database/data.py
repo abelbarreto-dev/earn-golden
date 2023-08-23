@@ -1,9 +1,12 @@
 from sqlalchemy import (
+    Integer,
     BigInteger,
     Column,
     String,
     Date,
     ForeignKey,
+    Enum,
+    DECIMAL,
 )
 
 from src.database.connection import Base
@@ -30,3 +33,14 @@ class Bank(Base):
     name = Column(String(128), nullable=False)
     code = Column(String(32), nullable=False)
     agency = Column(String(32), nullable=False)
+
+
+class BankAccount(Base):
+    __tablename__ = "bank_accounts"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    bank_id = Column(BigInteger, ForeignKey("banks.id"), nullable=False)
+    variation = Column(Integer, nullable=True)
+    number = Column(String(64), nullable=False)
+    type_account = Column(Enum("payment", "saving", "checking"), nullable=False)
+    balance = Column(DECIMAL(10, 2), nullable=False)
