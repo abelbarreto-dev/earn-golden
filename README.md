@@ -10,6 +10,7 @@ yourself.
 - [Dependencies](#dependencies)
 - [Models](#models)
   - [Detailed Models](#detailed-models)
+- [Migrations]()
 - [How to Run](#how-to-run)
 - [Database Relationship](#database-relationship)
 - [Project FAQ](#project-faq)
@@ -17,6 +18,7 @@ yourself.
 ## Dependencies
 This project is build with MVC and Python Programming Language. But we have some additional packages like:
 
+- Alembic
 - Python 3
 - Pip
 - Pydantic
@@ -77,6 +79,12 @@ each model with their attributes:
 {}
 ```
 
+## Migrations
+To run this app you need to have a migration structure. You can generate
+it running the module [set_alembic.py](set_alembic.py) or if there's
+in this project, I may to recommend see: [How to Migrate](#migrations)
+in FAQ.
+
 ## How to Run
 > **TO-DO**
 
@@ -84,6 +92,20 @@ each model with their attributes:
 > **TO-DO**
 
 ## Project FAQ
-> **TO-DO**
+Here we've a FAQ about this project.
+
+<details id="migrations">
+    <summary>
+        How to Migrate?
+    </summary>
+    <ul>
+        <caption>Creating A Migration:</caption>
+        <li><code>alembic revision --autogenerate "migration_phrase"</code></li>
+        <caption>Running a Migration:</caption>
+        <li><code>alembic upgrade head</code></li>
+        <caption>You can swap to a version:</caption>
+        <li><code>alembic upgrade 73d4b45005c5</code></li>
+    </ul>
+</details>
 
 [back to doc init](#earn-golden)
