@@ -68,6 +68,7 @@ class TransferPix(BaseModel):
     send_pix_key: str
     receiver_pix_key: str
     balance: Decimal
+    account_id: Optional[int] = None
 
 
 class TransferPixAccounts(BaseModel):
