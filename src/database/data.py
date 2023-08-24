@@ -78,7 +78,7 @@ class Pix(Base):
     id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
     bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
     pix_key_type = Column(Enum("email", "randomic", "mobile", "cpf", "cnpj"), nullable=False)
-    pix_key = Column(String(255), nullable=False)
+    pix_key = Column(String(255), nullable=False, unique=True)
 
 
 class TransferPix(Base):
