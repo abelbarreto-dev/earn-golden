@@ -69,3 +69,12 @@ class Invoice(Base):
     installments_value = Column(DECIMAL(10, 2), nullable=False)
     close_date = Column(Date, nullable=False)
     payment_date = Column(Date, nullable=False)
+
+
+class Pix(Base):
+    __tablename__ = "pixes"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
+    pix_key_type = Column(Enum("email", "randomic", "mobile", "cpf", "cnpj"), nullable=False)
+    pix_key = Column(String(255), nullable=False)
