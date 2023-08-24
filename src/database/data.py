@@ -57,3 +57,15 @@ class Card(Base):
     sec_code = Column(String(16), nullable=False)
     type_card = Column(Enum('credit', 'debit', 'prepaid'), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
+
+
+class Invoice(Base):
+    __tablename__ = "invoices"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    card_id = Column(BigInteger, ForeignKey("cards.id"), nullable=False)
+    total_invoice = Column(DECIMAL(10, 2), nullable=False)
+    installments = Column(Integer, nullable=False)
+    installments_value = Column(DECIMAL(10, 2), nullable=False)
+    close_date = Column(Date, nullable=False)
+    payment_date = Column(Date, nullable=False)
