@@ -101,3 +101,16 @@ class TransferPixAccount(Base):
     account_id = Column(BigInteger, ForeignKey("accounts.id"), nullable=False)
     pix_id_sender = Column(BigInteger, ForeignKey("pixes.id"), nullable=False)
     pix_id_receiver = Column(BigInteger, ForeignKey("pixes.id"), nullable=True)
+
+
+class MoneyBox(Base):
+    __tablename__ = "money_boxes"
+
+    id = Column(BigInteger, primary_key=True, nullable=False)
+    account_id = Column(BigInteger, ForeignKey("accounts.id"), nullable=False)
+    name = Column(String(128), nullable=False)
+    description = Column(String(255), nullable=False)
+    start_date = Column(Date, nullable=True)
+    end_date = Column(Date, nullable=True)
+    objective = Column(DECIMAL(10, 2), nullable=True)
+    balance = Column(DECIMAL(10, 2), nullable=False)
