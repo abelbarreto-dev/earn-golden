@@ -7,6 +7,7 @@ from sqlalchemy import (
     ForeignKey,
     Enum,
     DECIMAL,
+    Boolean,
 )
 
 from src.database.connection import Base
@@ -55,7 +56,7 @@ class Card(Base):
     number = Column(String(128), nullable=False)
     due_date = Column(Date, nullable=False)
     sec_code = Column(String(16), nullable=False)
-    type_card = Column(Enum('credit', 'debit', 'prepaid'), nullable=False)
+    type_card = Column(Enum("credit", "debit", "prepaid"), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
 
 
@@ -78,3 +79,16 @@ class Pix(Base):
     bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
     pix_key_type = Column(Enum("email", "randomic", "mobile", "cpf", "cnpj"), nullable=False)
     pix_key = Column(String(255), nullable=False)
+
+
+class TransferPix(Base):
+    __tablename__ = "transfer_pixes"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    account_id = Column(BigInteger, ForeignKey("accounts.id"), nullable=False)
+    send_pix_type = Column(Enum("mobile", "email", "cpf", "cnpj", "randomic"), nullable=False)
+    receiver_pix_type = Column(Enum("mobile", "email", "cpf", "cnpj", "randomic"), nullable=False)
+    is_yours = Column(Boolean, default=False)
+    send_pix_key = Column(String(255), nullable=False)
+    receiver_pix_key = Column(String(255), nullable=False)
+    balance = Column(DECIMAL(10, 2), nullable=False)
