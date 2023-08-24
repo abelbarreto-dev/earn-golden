@@ -92,3 +92,12 @@ class TransferPix(Base):
     send_pix_key = Column(String(255), nullable=False)
     receiver_pix_key = Column(String(255), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
+
+
+class TransferPixAccount(Base):
+    __tablename__ = "transfer_pix_accounts"
+
+    id = Column(BigInteger, primary_key=True, nullable=False)
+    account_id = Column(BigInteger, ForeignKey("accounts.id"), nullable=False)
+    pix_id_sender = Column(BigInteger, ForeignKey("pixes.id"), nullable=False)
+    pix_id_receiver = Column(BigInteger, ForeignKey("pixes.id"), nullable=True)

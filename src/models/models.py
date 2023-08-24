@@ -74,6 +74,7 @@ class TransferPix(BaseModel):
 class TransferPixAccounts(BaseModel):
     id_pix_sender: int
     id_pix_receiver: Optional[int] = None
+    account_id: Optional[int] = None
 
 
 class MoneyBox(BaseModel):
