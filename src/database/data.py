@@ -114,3 +114,12 @@ class MoneyBox(Base):
     end_date = Column(Date, nullable=True)
     objective = Column(DECIMAL(10, 2), nullable=True)
     balance = Column(DECIMAL(10, 2), nullable=False)
+
+
+class TransferMoneyBox(Base):
+    __tablename__ = "transfer_money_boxes"
+
+    id = Column(BigInteger, primary_key=True, nullable=False)
+    money_box_id = Column(BigInteger, ForeignKey("money_boxes.id"), nullable=False)
+    money_operation = Column(Enum("deposit", "withdraw"), nullable=False)
+    balance = Column(DECIMAL(10, 2), nullable=False)
