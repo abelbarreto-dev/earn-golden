@@ -123,3 +123,14 @@ class TransferMoneyBox(Base):
     money_box_id = Column(BigInteger, ForeignKey("money_boxes.id"), nullable=False)
     money_operation = Column(Enum("deposit", "withdraw"), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
+
+
+class Signature(Base):
+    __tablename__ = "signatures"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    account_id = Column(BigInteger, ForeignKey("accounts.id"))
+    name = Column(String(128), nullable=False)
+    descript = Column(String(255), nullable=False)
+    due_date = Column(Date, nullable=False)
+    value = Column(DECIMAL(10, 2), nullable=False)
