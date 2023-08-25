@@ -92,7 +92,7 @@ class TransferMoneyBox(BaseModel):
     money_box_id: Optional[int] = None
 
 
-class Signatures(BaseModel):
+class Signature(BaseModel):
     name: str
     descript: str
     due_date: date
