@@ -144,3 +144,12 @@ class Payment(Base):
     name = Column(String(128), nullable=False)
     descript = Column(String(255), nullable=False)
     value_to_pay = Column(DECIMAL(10, 2), nullable=False)
+
+
+class Deposit(Base):
+    __tablename__ = "deposits"
+
+    id = Column(BigInteger, primary_key=True, autoincrement=True, nullable=False)
+    bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
+    descript = Column(String(255), nullable=True)
+    balance = Column(DECIMAL(10, 2), nullable=False)
