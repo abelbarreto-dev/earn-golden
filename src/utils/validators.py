@@ -1,10 +1,13 @@
 from re import match
 
+from decimal import Decimal
+
 from src.utils.enums import CheckRegex
 
 from src.exceptions.exceptions import (
     EmailException,
     UsernameException,
+    MoneyException,
 )
 
 
@@ -18,3 +21,8 @@ class Validator:
     def check_username(cls, username: str):
         if not match(CheckRegex.USERNAME.value, username):
             raise UsernameException()
+
+    @classmethod
+    def check_money(cls, money: Decimal) -> None:
+        if not match(CheckRegex.MONEY.value, str(money)):
+            raise MoneyException()
