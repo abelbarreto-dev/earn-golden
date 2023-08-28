@@ -12,6 +12,8 @@ from sqlalchemy import (
 
 from src.database.connection import Base
 
+from src.database.sqltypes import YearMonthDateDB
+
 
 class Account(Base):
     __tablename__ = "accounts"
@@ -54,7 +56,7 @@ class Card(Base):
     bank_account_id = Column(BigInteger, ForeignKey("bank_accounts.id"), nullable=False)
     name = Column(String(128), nullable=False)
     number = Column(String(128), nullable=False)
-    due_date = Column(Date, nullable=False)
+    due_date = Column(YearMonthDateDB, nullable=False)
     sec_code = Column(String(16), nullable=False)
     type_card = Column(Enum("credit", "debit", "prepaid"), nullable=False)
     balance = Column(DECIMAL(10, 2), nullable=False)
