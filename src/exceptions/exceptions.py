@@ -31,3 +31,18 @@ class DueDateException(ValueError):
 class NumberCardException(ValueError):
     def __init__(self):
         super().__init__("number card is not valid")
+
+
+class AgencyNumberException(ValueError):
+    def __init__(self):
+        super().__init__("bank agency number is not valid")
+
+
+class SavingNumberException(ValueError):
+    def __init__(self):
+        super().__init__("saving account number is not valid")
+
+
+class CheckingNumberException(ValueError):
+    def __init__(self):
+        super().__init__("checking account number is not valid")

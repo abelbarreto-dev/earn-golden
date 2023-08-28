@@ -13,6 +13,9 @@ from src.exceptions.exceptions import (
     DateException,
     DueDateException,
     NumberCardException,
+    AgencyNumberException,
+    CheckingNumberException,
+    SavingNumberException,
 )
 
 from src.utils.year_month_date import YearMonthDate
