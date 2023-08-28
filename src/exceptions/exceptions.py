@@ -46,3 +46,8 @@ class SavingNumberException(ValueError):
 class CheckingNumberException(ValueError):
     def __init__(self):
         super().__init__("checking account number is not valid")
+
+
+class CPFException(ValueError):
+    def __init__(self, message: str = "message"):
+        super().__init__(message)
