@@ -31,3 +31,4 @@ class CheckRegex(Enum):
     USERNAME = r"^[a-z_]+[a-z_.0-9]+[a-z0-9_]{1}$"
     MONEY = r"^[0-9]+(?:\.[0-9]{2})?$"
     PERCENT = r"^[0-9]+.[0-9]{1,}$"
+    CARD_NUMBER = r"^[0-9]{16}$"
