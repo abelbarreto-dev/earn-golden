@@ -9,6 +9,9 @@ from src.exceptions.exceptions import (
     UsernameException,
     MoneyException,
     PercentException,
+    DateException,
+    DueDateException,
+    NumberCardException,
 )
 
 
