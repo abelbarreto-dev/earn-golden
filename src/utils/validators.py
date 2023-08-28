@@ -76,3 +76,8 @@ class Validator:
     def check_account_saving(cls, saving: str) -> None:
         if not match(CheckRegex.SAVING.value, saving):
             raise SavingNumberException()
+
+    @classmethod
+    def check_account_checking(cls, checking: str) -> None:
+        if not match(CheckRegex.CHECKING.value, checking):
+            raise CheckingNumberException()
