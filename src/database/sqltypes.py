@@ -1,46 +1,25 @@
-from sqlalchemy.sql.sqltypes import (
-    HasExpressionLookup,
-    TypeEngine,
-)
+from sqlalchemy.sql.sqltypes import TypeDecorator
 
+from sqlalchemy import (
+    types,
+    Dialect,
+)
 
 from src.utils.year_month_date import YearMonthDate
 
 
-class _RenderISO8601NoT:
-    def _literal_processor_date(self, dialect):
-        return self._literal_processor_portion(dialect, 0)
-
-    def _literal_processor_portion(self, dialect, _portion=None):
-        assert _portion in (None, 0, -1)
-        if _portion is not None:
-
-            def process(value):
-                if value is not None:
-                    value = f"""'{value.isoformat().split("T")[_portion]}'"""
-                return value
-
-        else:
-
-            def process(value):
-                if value is not None:
-                    value = f"""'{value.isoformat().replace("T", " ")}'"""
-                return value
-
-        return process
-
-
-class YearMonthDateDB(_RenderISO8601NoT, HasExpressionLookup, TypeEngine["YearMonthDate"]):
-    """A type for ``Year Month Date`` objects."""
-
-    __visit_name__ = "YearMonthDate"
+class YearMonthDateDB(TypeDecorator):
+    impl = types.String(7)
 
     def get_dbapi_type(self, dbapi):
-        return dbapi.DATETIME
+        return dbapi.YEAR_MONTH_DATE
 
     @property
     def python_type(self):
         return YearMonthDate
 
-    def literal_processor(self, dialect):
-        return self._literal_processor_date(dialect)
+    def process_bind_param(self, value: YearMonthDate, dialect: Dialect) -> str:
+        return str(value)
+
+    def process_result_value(self, value: YearMonthDate, dialect: Dialect) -> YearMonthDate:
+        return value
