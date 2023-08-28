@@ -1,3 +1,4 @@
+import datetime
 from re import match
 
 from decimal import Decimal
@@ -9,7 +10,12 @@ from src.exceptions.exceptions import (
     UsernameException,
     MoneyException,
     PercentException,
+    DateException,
+    DueDateException,
+    NumberCardException,
 )
+
+from src.utils.year_month_date import YearMonthDate
 
 
 class Validator:
@@ -32,3 +38,28 @@ class Validator:
     def check_percent(cls, percent: Decimal, name: str = "percentage") -> None:
         if not match(CheckRegex.PERCENT.value, str(percent)):
             raise PercentException(name)
+
+    @classmethod
+    def check_number_card(cls, number_card: str) -> None:
+        if not match(CheckRegex.CARD_NUMBER.value, number_card):
+            raise NumberCardException()
+
+    @classmethod
+    def check_birth_date(cls, birth_date: datetime.date) -> None:
+        if not birth_date < datetime.date.today():
+            raise DateException("birth date")
+
+    @classmethod
+    def check_date_today(cls, today: datetime.date) -> None:
+        if today not in (datetime.date.today(), ):
+            raise DateException("your date for today")
+
+    @classmethod
+    def check_date_future(cls, future: datetime.date) -> None:
+        if future <= datetime.date.today():
+            raise DateException("future date")
+
+    @classmethod
+    def check_card_due_date(cls, due_date: YearMonthDate) -> None:
+        if not match(CheckRegex.CARD_DATE.value, str(due_date)):
+            raise DueDateException()
