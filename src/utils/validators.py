@@ -13,6 +13,9 @@ from src.exceptions.exceptions import (
     DateException,
     DueDateException,
     NumberCardException,
+    AgencyNumberException,
+    CheckingNumberException,
+    SavingNumberException,
 )
 
 from src.utils.year_month_date import YearMonthDate
@@ -63,3 +66,18 @@ class Validator:
     def check_card_due_date(cls, due_date: YearMonthDate) -> None:
         if not match(CheckRegex.CARD_DATE.value, str(due_date)):
             raise DueDateException()
+
+    @classmethod
+    def check_agency(cls, agency: str) -> None:
+        if not match(CheckRegex.AGENCY.value, agency):
+            raise AgencyNumberException()
+
+    @classmethod
+    def check_account_saving(cls, saving: str) -> None:
+        if not match(CheckRegex.SAVING.value, saving):
+            raise SavingNumberException()
+
+    @classmethod
+    def check_account_checking(cls, checking: str) -> None:
+        if not match(CheckRegex.CHECKING.value, checking):
+            raise CheckingNumberException()
