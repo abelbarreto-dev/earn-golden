@@ -16,3 +16,8 @@ class MoneyException(ValueError):
 class PercentException(ValueError):
     def __init__(self, name: str = "percentage"):
         super().__init__(f"{name} format is not valid")
+
+
+class DateException(ValueError):
+    def __init__(self):
+        super().__init__("date format is not valid")
