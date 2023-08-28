@@ -3,6 +3,8 @@ from typing import Optional
 from datetime import date
 from decimal import Decimal
 
+from src.utils.year_month_date import YearMonthDate
+
 from src.utils.enums import (
     BankAccountType,
     CardType,
@@ -39,7 +41,7 @@ class BankAccount(BaseModel):
 class Card(BaseModel):
     name: str
     number: str
-    due_date: date
+    due_date: YearMonthDate
     sec_code: str
     type_card: CardType
     balance: Decimal
