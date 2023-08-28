@@ -66,3 +66,8 @@ class Validator:
     def check_card_due_date(cls, due_date: YearMonthDate) -> None:
         if not match(CheckRegex.CARD_DATE.value, str(due_date)):
             raise DueDateException()
+
+    @classmethod
+    def check_agency(cls, agency: str) -> None:
+        if not match(CheckRegex.AGENCY.value, agency):
+            raise AgencyNumberException()
