@@ -35,3 +35,8 @@ class Validator:
     def check_percent(cls, percent: Decimal, name: str = "percentage") -> None:
         if not match(CheckRegex.PERCENT.value, str(percent)):
             raise PercentException(name)
+
+    @classmethod
+    def check_number_card(cls, number_card: str) -> None:
+        if not match(CheckRegex.CARD_NUMBER.value, number_card):
+            raise NumberCardException()
