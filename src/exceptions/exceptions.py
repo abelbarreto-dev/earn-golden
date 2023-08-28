@@ -19,8 +19,8 @@ class PercentException(ValueError):
 
 
 class DateException(ValueError):
-    def __init__(self):
-        super().__init__("date format is not valid")
+    def __init__(self, date: str = "date"):
+        super().__init__(f"{date} format is not valid")
 
 
 class DueDateException(ValueError):
