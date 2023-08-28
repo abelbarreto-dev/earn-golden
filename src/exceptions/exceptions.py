@@ -26,3 +26,8 @@ class DateException(ValueError):
 class DueDateException(ValueError):
     def __init__(self):
         super().__init__("due date format is not valid")
+
+
+class NumberCardException(ValueError):
+    def __init__(self):
+        super().__init__("number card is not valid")
