@@ -15,6 +15,8 @@ from src.exceptions.exceptions import (
     NumberCardException,
 )
 
+from src.utils.year_month_date import YearMonthDate
+
 
 class Validator:
     @classmethod
@@ -56,3 +58,8 @@ class Validator:
     def check_date_future(cls, future: datetime.date) -> None:
         if future <= datetime.date.today():
             raise DateException("future date")
+
+    @classmethod
+    def check_card_due_date(cls, due_date: YearMonthDate) -> None:
+        if not match(CheckRegex.CARD_DATE.value, str(due_date)):
+            raise DueDateException()

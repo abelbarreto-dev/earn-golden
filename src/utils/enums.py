@@ -32,3 +32,4 @@ class CheckRegex(Enum):
     MONEY = r"^[0-9]+(?:\.[0-9]{2})?$"
     PERCENT = r"^[0-9]+.[0-9]{1,}$"
     CARD_NUMBER = r"^[0-9]{16}$"
+    CARD_DATE = r"^[0-9]{4}\-[0-9]{2}$"
