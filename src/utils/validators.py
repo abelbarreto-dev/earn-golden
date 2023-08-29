@@ -17,11 +17,14 @@ from src.exceptions.exceptions import (
     CheckingNumberException,
     SavingNumberException,
     CPFException,
+    CNPJException,
 )
 
 from src.utils.year_month_date import YearMonthDate
 
 from src.calculate.cpf_calc import CPFCalc
+
+from src.calculate.cnpj_calc import CNPJCalc
 
 
 class Validator:
@@ -91,3 +94,10 @@ class Validator:
             raise CPFException("cpf format is not valid for numeric or length")
 
         CPFCalc().cpf_calc_checker(cpf)
+
+    @classmethod
+    def check_cnpj(cls, cnpj: str) -> None:
+        if not match(CheckRegex.CNPJ.value, cnpj):
+            raise CNPJException("cnpj format is not valid for numeric or length")
+
+        CNPJCalc().cnpj_calc_checker(cnpj)
