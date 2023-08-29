@@ -61,3 +61,8 @@ class CNPJException(ValueError):
 class MobilePhoneException(ValueError):
     def __init__(self):
         super().__init__("mobile phone number is not valid")
+
+
+class UUIDFourException(ValueError):
+    def __init__(self, name: str = "uuid4"):
+        super().__init__(f"{name} format is not valid")

@@ -19,6 +19,7 @@ from src.exceptions.exceptions import (
     CPFException,
     CNPJException,
     MobilePhoneException,
+    UUIDFourException,
 )
 
 from src.utils.year_month_date import YearMonthDate
@@ -107,3 +108,8 @@ class Validator:
     def check_mobile_number(cls, mobile: str) -> None:
         if not match(CheckRegex.MOBILE.value, mobile):
             raise MobilePhoneException()
+
+    @classmethod
+    def check_uuid_4(cls, uuid: str) -> None:
+        if not match(CheckRegex.UUID.value, uuid):
+            raise UUIDFourException()
