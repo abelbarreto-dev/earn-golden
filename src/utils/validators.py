@@ -18,6 +18,7 @@ from src.exceptions.exceptions import (
     SavingNumberException,
     CPFException,
     CNPJException,
+    MobilePhoneException,
 )
 
 from src.utils.year_month_date import YearMonthDate
@@ -101,3 +102,8 @@ class Validator:
             raise CNPJException("cnpj format is not valid for numeric or length")
 
         CNPJCalc().cnpj_calc_checker(cnpj)
+
+    @classmethod
+    def check_mobile_number(cls, mobile: str) -> None:
+        if not match(CheckRegex.MOBILE.value, mobile):
+            raise MobilePhoneException()
