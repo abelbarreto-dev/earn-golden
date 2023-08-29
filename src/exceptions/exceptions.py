@@ -56,3 +56,8 @@ class CPFException(ValueError):
 class CNPJException(ValueError):
     def __init__(self, message: str = "message"):
         super().__init__(message)
+
+
+class MobilePhoneException(ValueError):
+    def __init__(self):
+        super().__init__("mobile phone number is not valid")
