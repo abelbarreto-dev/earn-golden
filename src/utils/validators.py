@@ -20,6 +20,8 @@ from src.exceptions.exceptions import (
 
 from src.utils.year_month_date import YearMonthDate
 
+from src.calculate.cpf_calc import CPFCalc
+
 
 class Validator:
     @classmethod
@@ -81,3 +83,7 @@ class Validator:
     def check_account_checking(cls, checking: str) -> None:
         if not match(CheckRegex.CHECKING.value, checking):
             raise CheckingNumberException()
+
+    @classmethod
+    def check_cpf(cls, cpf: str) -> None:
+        CPFCalc().cpf_calc_checker(cpf)
