@@ -9,7 +9,11 @@ from typing import (
 class CNPJCalc:
     @classmethod
     def _get_check_digit(cls, sum_all: int) -> int:
-        pass
+        module_eleven = sum_all % 11
+
+        check_digit = (11 - module_eleven, 0)[module_eleven < 2]
+
+        return check_digit
 
     @classmethod
     def _get_multiply_calc_list(
