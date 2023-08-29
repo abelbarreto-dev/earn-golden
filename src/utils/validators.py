@@ -19,6 +19,7 @@ from src.exceptions.exceptions import (
     CPFException,
     CNPJException,
     MobilePhoneException,
+    UUIDFourException,
 )
 
 from src.utils.year_month_date import YearMonthDate
