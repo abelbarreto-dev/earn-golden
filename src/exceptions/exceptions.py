@@ -51,3 +51,8 @@ class CheckingNumberException(ValueError):
 class CPFException(ValueError):
     def __init__(self, message: str = "message"):
         super().__init__(message)
+
+
+class CNPJException(ValueError):
+    def __init__(self, message: str = "message"):
+        super().__init__(message)
