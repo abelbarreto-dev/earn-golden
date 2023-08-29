@@ -70,5 +70,5 @@ class CNPJCalc:
 
         check_digits = self._calculate(cnpj)
 
-        if check_digits not in cnpj[-2: 11]:
+        if check_digits not in cnpj[-2: 14]:
             raise CNPJException("cnpj checker digits are not valid")
