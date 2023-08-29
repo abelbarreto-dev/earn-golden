@@ -21,7 +21,8 @@ class CNPJCalc:
             new_cnpj: Generator[int, None, None],
             digits: List[int]
     ) -> Generator[int, None, None]:
-        pass
+        for x, y in zip(new_cnpj, digits):
+            yield x * y
 
     def _make_operation_check_digits(
             self,
