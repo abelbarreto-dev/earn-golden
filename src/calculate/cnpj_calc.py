@@ -7,12 +7,30 @@ from typing import (
 
 
 class CNPJCalc:
+    @classmethod
+    def _get_check_digit(cls, sum_all: int) -> int:
+        pass
+
+    @classmethod
+    def _get_multiply_calc_list(
+            cls,
+            new_cnpj: Generator[int, None, None],
+            digits: List[int]
+    ) -> Generator[int, None, None]:
+        pass
+
     def _make_operation_check_digits(
             self,
-            new_cpf: Generator[int, None, None],
+            new_cnpj: Generator[int, None, None],
             digits: List[int]
     ) -> int:
-        pass
+        list_sum_all = self._get_multiply_calc_list(new_cnpj, digits)
+
+        sum_all = sum(i for i in list_sum_all)
+
+        check_digit = self._get_check_digit(sum_all)
+
+        return check_digit
 
     def _calculate(self, cnpj: str) -> str:
         check_digits = ""
