@@ -23,7 +23,10 @@ This project is build with MVC and Python Programming Language. But we have some
 - Pip
 - Pydantic
 - SQL Alchemy
-- Flask
+- FastAPI
+- Uvicorn
+- Requests
+- BeautifulSoup4
 
 ## Models
 This is basically our models to use with intent of access the backend of this application. Here it
@@ -105,6 +108,16 @@ Here we've a FAQ about this project.
         <li><code>alembic upgrade head</code></li>
         <caption>You can swap to a version:</caption>
         <li><code>alembic upgrade 73d4b45005c5</code></li>
+    </ul>
+</details>
+
+<details id="install-dependencies">
+    <summary>
+        How To Install Dependencies?
+    </summary>
+    <ul>
+        <li>Generate a venv python, so:</li>
+        <li><code>pip install -r requirements.txt</code></li>
     </ul>
 </details>
 
