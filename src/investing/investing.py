@@ -1,0 +1,2 @@
+class Investing:
+    pass
