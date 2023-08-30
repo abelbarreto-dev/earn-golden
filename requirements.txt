@@ -1,6 +1,7 @@
 aes-encryption==0.2.0
 alembic==1.11.3
 annotated-types==0.5.0
+beautifulsoup4==4.12.2
 blinker==1.6.2
 click==8.1.6
 exceptiongroup==1.1.2
@@ -20,6 +21,7 @@ pydantic==2.1.1
 pydantic_core==2.4.0
 pytest==7.4.0
 python-dotenv==1.0.0
+soupsieve==2.4.1
 SQLAlchemy==2.0.20
 tomli==2.0.1
 typing_extensions==4.7.1
