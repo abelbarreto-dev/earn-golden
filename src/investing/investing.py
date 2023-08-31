@@ -17,7 +17,8 @@ from src.models.models import Quotation
 class Investing:
     FEATURE = "html.parser"
 
-    def _make_request(self, url) -> Response:
+    @classmethod
+    def _make_request(cls, url) -> Response:
         data_site = url_open(url)
 
         return data_site
