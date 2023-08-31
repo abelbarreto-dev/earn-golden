@@ -1,3 +1,5 @@
+import json
+
 from fastapi import APIRouter
 
 from fastapi import Response
@@ -13,7 +15,7 @@ route = get_route()
 @route.get("/")
 async def root() -> Response:
     return Response(
-        content={
+        content=json.dumps({
             "message": "Hello World! I'm EarnGolden."
-        }
+        })
     )
