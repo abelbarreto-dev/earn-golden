@@ -54,3 +54,16 @@ class Investing:
         )
 
         return dollar_real
+
+    def pound_in_real(self, deps: bool = load_dotenv()) -> Quotation:
+        pound_url = getenv("POUND_REAL")
+
+        pound = self._get_quotation(pound_url)
+
+        pound_real = Quotation(
+            description="British Pound In Brazilian Real",
+            original=Decimal("1.00"),
+            final_value=pound,
+        )
+
+        return pound_real
