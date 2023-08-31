@@ -119,5 +119,5 @@ class Deposit(BaseModel):
 # No database models representation
 class Quotation(BaseModel):
     original: Decimal
-    value: Decimal
+    final_value: Decimal
     description: str
