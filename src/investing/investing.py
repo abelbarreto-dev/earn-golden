@@ -1,5 +1,9 @@
 from decimal import Decimal
 
+from os import getenv
+
+from dotenv import load_dotenv
+
 from bs4 import BeautifulSoup
 
 from requests import (
@@ -7,11 +11,14 @@ from requests import (
     Response,
 )
 
+from src.models.models import Quotation
+
 
 class Investing:
     FEATURE = "html.parser"
 
-    def _make_request(self, url) -> Response:
+    @classmethod
+    def _make_request(cls, url) -> Response:
         data_site = url_open(url)
 
         return data_site
@@ -34,3 +41,16 @@ class Investing:
         money_str = money_str.replace(",", ".")
 
         return Decimal(money_str)
+
+    def dollar_in_real(self, deps: bool = load_dotenv()) -> Quotation:
+        dollar_url = getenv("DOLLAR_REAL")
+
+        dollar = self._get_quotation(dollar_url)
+
+        dollar_real = Quotation(
+            description="Dollar In Brazilian Real",
+            original=Decimal("1.00"),
+            final_value=dollar,
+        )
+
+        return dollar_real
