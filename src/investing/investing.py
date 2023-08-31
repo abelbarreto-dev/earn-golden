@@ -2,6 +2,8 @@ from decimal import Decimal
 
 from os import getenv
 
+from re import match
+
 from dotenv import load_dotenv
 
 from bs4 import BeautifulSoup
@@ -11,7 +13,11 @@ from requests import (
     Response,
 )
 
+from src.exceptions.exceptions import QuotationException
+
 from src.models.models import Quotation
+
+from src.utils.enums import CheckRegex
 
 
 class Investing:
@@ -20,6 +26,9 @@ class Investing:
     @classmethod
     def _make_request(cls, url) -> Response:
         data_site = url_open(url)
+
+        if data_site.status_code not in (200, ):
+            raise QuotationException("failed the make investing site request")
 
         return data_site
 
@@ -36,7 +45,13 @@ class Investing:
             True
         )
 
+        if not span_tag:
+            raise QuotationException("failed to access the specified tag and it parameter")
+
         money_str = span_tag[0].text
+
+        if not match(CheckRegex.MONEY_COMMON.value, money_str):
+            raise QuotationException("money format invalid here")
 
         money_str = money_str.replace(",", ".")
 

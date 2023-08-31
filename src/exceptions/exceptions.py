@@ -66,3 +66,8 @@ class MobilePhoneException(ValueError):
 class UUIDFourException(ValueError):
     def __init__(self, name: str = "uuid4"):
         super().__init__(f"{name} format is not valid")
+
+
+class QuotationException(ValueError):
+    def __init__(self, message: str):
+        super().__init__(message)
