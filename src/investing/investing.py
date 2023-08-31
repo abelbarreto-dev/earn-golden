@@ -1,5 +1,9 @@
 from decimal import Decimal
 
+from os import getenv
+
+from dotenv import load_dotenv
+
 from bs4 import BeautifulSoup
 
 from requests import (
@@ -34,3 +38,8 @@ class Investing:
         money_str = money_str.replace(",", ".")
 
         return Decimal(money_str)
+
+    def dollar_in_real(self, deps: bool = load_dotenv()):
+        dollar_url = getenv("DOLLAR_REAL")
+
+        dollar = self._get_quotation(dollar_url)
