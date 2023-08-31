@@ -114,3 +114,10 @@ class Deposit(BaseModel):
     balance: Decimal
     bank_account_id: int
     descript: Optional[str] = None
+
+
+# No database models representation
+class Quotation(BaseModel):
+    original: Decimal
+    value: Decimal
+    description: str
