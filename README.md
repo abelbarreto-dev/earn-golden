@@ -27,6 +27,8 @@ This project is build with MVC and Python Programming Language. But we have some
 - Uvicorn
 - Requests
 - BeautifulSoup4
+- Docker
+- Docker Compose >= 2.21.0
 
 ## Models
 This is basically our models to use with intent of access the backend of this application. Here it
@@ -89,7 +91,10 @@ in this project, I may to recommend see: [How to Migrate](#how-to-migrate)
 in FAQ.
 
 ## How to Run
-> **TO-DO**
+To run this application, just copy and paste:
+```commandline
+uvicorn app:app --reload
+```
 
 ## Database Relationship
 > **TO-DO**
@@ -119,6 +124,22 @@ Here we've a FAQ about this project.
         <li>Generate a venv python, so:</li>
         <li><code>pip install -r requirements.txt</code></li>
     </ul>
+</details>
+
+<details>
+    <summary>How To Install Docker and Docker Compose?</summary>
+    <caption>Linux OS</caption>
+    <li><code>sudo curl -L "https://github.com/docker/compose/releases/download/3.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</code></li>
+    <li><code>sudo chmod +x /usr/local/bin/docker-compose</code></li>
+    <li><code>sudo usermod -aG docker $USER</code></li>
+</details>
+
+<details>
+    <summary>How To Run or Stop Docker Compose?</summary>
+    <caption>To Run Docker:</caption>
+    <li><code>docker-compose up -d</code></li>
+    <caption>To Stop Docker:</caption>
+    <li><code>docker-compose down</code></li>
 </details>
 
 [back to doc init](#earn-golden)
