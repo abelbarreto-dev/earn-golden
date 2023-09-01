@@ -1,0 +1,47 @@
+version: "2.21.0"
+
+services:
+  db_prodution:
+    image: mysql:8.1
+    container_name: db_production
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_db1
+      MYSQL_DATABASE: earn_golden_production
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWD}
+    ports:
+      - "3307:3307"
+    command: --port=3307
+    networks:
+      - mynetwork
+
+  db_staging:
+    image: mysql:8.1
+    container_name: db_staging
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_db1
+      MYSQL_DATABASE: earn_golden_staging
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWD}
+    ports:
+      - "3308:3308"
+    command: --port=3308
+    networks:
+      - mynetwork
+
+  db_test:
+    image: mysql:8.1
+    container_name: db_test
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password_db2
+      MYSQL_DATABASE: earn_gold_testing
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWD}
+    ports:
+      - "3309:3309"
+    command: --port=3309
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
