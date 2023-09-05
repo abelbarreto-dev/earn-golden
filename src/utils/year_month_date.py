@@ -1,97 +1,63 @@
-def _cmp(x, y):
-    return 0 if x == y else 1 if x > y else -1
+from pydantic import BaseModel, model_validator
 
 
-def _min_year() -> int:
-    return 1
+class YearMonthDate(BaseModel):
+    year: int
+    month: int
 
+    @model_validator(mode="after")
+    def _check_date(self):
+        min_year, max_year = 1, 9999
 
-def _max_year() -> int:
-    return 9999
+        if not 0 < self.month < 13:
+            raise ValueError(
+                f"month value not in 1...12",
+                self.month,
+            )
 
-
-class YearMonthDate:
-    __slots__ = "_year", "_month", "_hashcode"
-
-    def __new__(cls, year: int, month: int):
-        if month is None and isinstance(year, (bytes, str)) and len(year) == 4 and 1 <= ord(year[2:3]) <= 12:
-            # Pickle support
-            if isinstance(year, str):
-                try:
-                    year = year.encode('latin1')
-                except UnicodeEncodeError:
-                    # More informative error message.
-                    raise ValueError(
-                        "Failed to encode latin1 string when unpickling "
-                        "a date object. "
-                        "pickle.load(data, encoding='latin1') is assumed.")
-            self = object.__new__(cls)
-            self.__setstate(year)
-            self._hashcode = -1
-            return self
-        year, month = cls._check_date_fields(year, month)
-        self = object.__new__(cls)
-        self._year = year
-        self._month = month
-        self._hashcode = -1
-        return self
+        if not min_year <= self.year <= max_year:
+            raise ValueError(
+                f"year value not in {min_year}...{max_year}",
+                self.year,
+            )
 
     def iso_format(self):
-        return "%04d-%02d" % (self._year, self._month)
+        return "%04d-%02d" % (self.year, self.month)
 
     __str__ = iso_format
 
-    def __setstate(self, string):
-        yhi, ylo, self._month = string
-        self._year = yhi * 256 + ylo
-
-    @classmethod
-    def _check_date_fields(cls, year, month):
-        year = int(year)
-        month = int(month)
-        if not _min_year() <= year <= _max_year():
-            raise ValueError('year must be in %d..%d' % (_min_year(), _max_year()), year)
-        if not 1 <= month <= 12:
-            raise ValueError('month must be in 1..12', month)
-        return year, month
-
-    @property
-    def year(self):
-        """year (1-9999)"""
-        return self._year
-
-    @property
-    def month(self):
-        """month (1-12)"""
-        return self._month
-
-    def _cmp(self, other):
-        assert isinstance(other, YearMonthDate)
-        y, m = self._year, self._month
-        y2, m2 = other._year, other._month
-        return _cmp((y, m), (y2, m2))
-
-    def __eq__(self, other):
-        if isinstance(other, YearMonthDate):
-            return self._cmp(other) == 0
-        return NotImplemented
-
-    def __le__(self, other):
-        if isinstance(other, YearMonthDate):
-            return self._cmp(other) <= 0
-        return NotImplemented
-
     def __lt__(self, other):
-        if isinstance(other, YearMonthDate):
-            return self._cmp(other) < 0
-        return NotImplemented
+        if (
+                self.year < other.year or
+                (self.year == other.year and self.month < other.month)
+        ):
+            return True
 
-    def __ge__(self, other):
-        if isinstance(other, YearMonthDate):
-            return self._cmp(other) >= 0
-        return NotImplemented
+        return False
 
     def __gt__(self, other):
-        if isinstance(other, YearMonthDate):
-            return self._cmp(other) > 0
-        return NotImplemented
+        if (
+                self.year > other.year or
+                (self.year == other.year and self.month > other.month)
+        ):
+            return True
+
+        return False
+
+    def __eq__(self, other):
+        if (self.year, self.month) == (other.year, other.month):
+            return True
+
+        return False
+
+    def __le__(self, other):
+        if self.year <= other.year:
+            return self.month <= other.month
+
+        return False
+
+    def __ge__(self, other):
+        if self.year >= other.year:
+            return self.month >= other.month
+
+        return False
