@@ -12,7 +12,7 @@ from sqlalchemy import (
 
 from src.database.connection import Base
 
-from src.database.sqltypes import YearMonthDateDB
+from src.database.sql_types import YearMonthDateDB
 
 
 class Account(Base):

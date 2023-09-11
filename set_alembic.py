@@ -1,11 +1,15 @@
-from dotenv import load_dotenv
-
 from os import system
+
+from dotenv import load_dotenv
 
 from src.utils.db_urls import get_mysql_url
 
+ENCODING = "utf-8"
 
-def set_alembic_ini(deps: bool = load_dotenv()) -> None:
+
+def set_alembic_ini() -> None:
+    load_dotenv()
+
     init_alembic = "alembic init alembic"
 
     system(init_alembic)
@@ -14,12 +18,12 @@ def set_alembic_ini(deps: bool = load_dotenv()) -> None:
     to_replace_database_url = f"sqlalchemy.url = {database_url}"
     file = "alembic.ini"
 
-    with open(file, "r") as alembic:
+    with open(file, "r", encoding=ENCODING) as alembic:
         data = alembic.readlines()
 
         data[62] = to_replace_database_url
 
-    with open(file, "w") as alembic:
+    with open(file, "w", encoding=ENCODING) as alembic:
         alembic.writelines(data)
 
 
@@ -28,7 +32,7 @@ def set_base_metadata_env_py() -> None:
     package = "src.database.data"
     classname = "Base"
 
-    with open(file, "r") as alembic:
+    with open(file, "r", encoding=ENCODING) as alembic:
         data = alembic.readlines()
 
     import_base = f"from {package} import {classname}\n"
@@ -39,7 +43,7 @@ def set_base_metadata_env_py() -> None:
 
     data[22] = data[22].replace("None", base_metadata)
 
-    with open(file, "w") as alembic:
+    with open(file, "w", encoding=ENCODING) as alembic:
         alembic.writelines(data)
 
 

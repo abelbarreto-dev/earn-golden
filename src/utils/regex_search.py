@@ -9,7 +9,7 @@ def get_class_name(
     new_search = search(regex, original)
 
     if new_search is None:
-        raise Exception("the class name wasn't found")
+        raise TypeError("the class name wasn't found")
 
     new_word = new_search.group(1)
 

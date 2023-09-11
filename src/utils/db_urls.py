@@ -3,7 +3,9 @@ from os import getenv
 from dotenv import load_dotenv
 
 
-def get_mysql_url(load: bool = load_dotenv()):
+def get_mysql_url():
+    load_dotenv()
+
     server = "mysql"
     driver = "mysqlconnector"
 

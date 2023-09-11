@@ -1,7 +1,8 @@
-from pydantic import BaseModel
 from typing import Optional
 from datetime import date
 from decimal import Decimal
+
+from pydantic import BaseModel
 
 from src.utils.year_month_date import YearMonthDate
 
