@@ -23,3 +23,6 @@ class YearMonthDateDB(TypeDecorator):
 
     def process_result_value(self, value: YearMonthDate, dialect: Dialect) -> YearMonthDate:
         return value
+
+    def process_literal_param(self, value: YearMonthDate, dialect: Dialect) -> str:
+        return str(value)

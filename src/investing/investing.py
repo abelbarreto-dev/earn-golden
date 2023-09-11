@@ -21,6 +21,7 @@ from src.utils.enums import CheckRegex
 
 
 class Investing:
+    load_dotenv()
     FEATURE = "html.parser"
 
     @classmethod
@@ -57,7 +58,8 @@ class Investing:
 
         return Decimal(money_str)
 
-    def dollar_in_real(self, deps: bool = load_dotenv()) -> Quotation:
+    def dollar_in_real(self) -> Quotation:
+
         dollar_url = getenv("DOLLAR_REAL")
 
         dollar = self._get_quotation(dollar_url)
@@ -70,7 +72,7 @@ class Investing:
 
         return dollar_real
 
-    def pound_in_real(self, deps: bool = load_dotenv()) -> Quotation:
+    def pound_in_real(self) -> Quotation:
         pound_url = getenv("POUND_REAL")
 
         pound = self._get_quotation(pound_url)
@@ -83,7 +85,7 @@ class Investing:
 
         return pound_real
 
-    def euro_in_real(self, deps: bool = load_dotenv()) -> Quotation:
+    def euro_in_real(self) -> Quotation:
         euro_url = getenv("EURO_REAL")
 
         euro = self._get_quotation(euro_url)

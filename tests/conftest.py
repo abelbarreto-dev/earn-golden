@@ -1,16 +1,16 @@
+from typing import Generator, Type
+
 import pytest
 
 from fastapi.testclient import TestClient
 
-from typing import Generator, Type
+from sqlalchemy.orm import SessionTransaction
 
 from app import app
 
 from src.database.connection import get_session
 
 from src.utils.validators import Validator
-
-from sqlalchemy.orm import SessionTransaction
 
 
 @pytest.fixture(scope="function")

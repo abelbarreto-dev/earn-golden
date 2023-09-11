@@ -1,9 +1,9 @@
-from src.exceptions.exceptions import CNPJException
-
 from typing import (
     List,
     Generator,
 )
+
+from src.exceptions.exceptions import CNPJException
 
 
 class CNPJCalc:
@@ -21,8 +21,8 @@ class CNPJCalc:
             new_cnpj: Generator[int, None, None],
             digits: List[int]
     ) -> Generator[int, None, None]:
-        for x, y in zip(new_cnpj, digits):
-            yield x * y
+        for _x, _y in zip(new_cnpj, digits):
+            yield _x * _y
 
     def _make_operation_check_digits(
             self,

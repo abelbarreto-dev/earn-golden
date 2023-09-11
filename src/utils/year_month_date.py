@@ -3,7 +3,7 @@ from pydantic import (
     model_validator,
 )
 
-from src.utils.regex_serch import get_class_name
+from src.utils.regex_search import get_class_name
 
 
 def _instance_year_month_date(
@@ -13,7 +13,7 @@ def _instance_year_month_date(
     name_class = get_class_name(class_built)
 
     if name_class not in (class_name, ):
-        raise Exception(f"this object is not an instance of {class_name} class.")
+        raise TypeError(f"this object is not an instance of {class_name} class.")
 
 
 class YearMonthDate(BaseModel):
@@ -26,7 +26,7 @@ class YearMonthDate(BaseModel):
 
         if not 0 < self.month < 13:
             raise ValueError(
-                f"month value not in 1...12",
+                f"month \"{self.month}\" value not in 1...12",
                 self.month,
             )
 
@@ -37,7 +37,7 @@ class YearMonthDate(BaseModel):
             )
 
     def iso_format(self):
-        return "%04d-%02d" % (self.year, self.month)
+        return f"{self.year:04d}-{self.month:02d}"
 
     __str__ = iso_format
 
