@@ -1,0 +1,2 @@
+class ServicePix:
+    pass
