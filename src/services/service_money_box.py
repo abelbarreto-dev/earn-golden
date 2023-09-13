@@ -1,0 +1,2 @@
+class ServiceMoneyBox:
+    pass
