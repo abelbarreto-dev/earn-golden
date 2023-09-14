@@ -1,0 +1,2 @@
+class ServiceDeposit:
+    pass
